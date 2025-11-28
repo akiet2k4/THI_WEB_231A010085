@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bài 01 - TODO MATRIX</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<main class="container two-col">
+<aside class="info">
+<div class="avatar-wrap">
+<img src="images/avatar.jpg" alt="avatar" class="avatar" onerror="this.src='https://via.placeholder.com/180'" />
+</div>
+<h2 id="name">Họ tên: Người Nộp</h2>
+<p id="mssv">MSSV: [MSSV]</p>
+</aside>
+
+
+<section class="task-board">
+<h1>TODO Matrix - Eisenhower</h1>
+
+
+<form id="taskForm" class="task-form" autocomplete="off">
+<input id="taskName" type="text" placeholder="Tên công việc" required />
+<select id="priority" required>
+<option value="1">1 - Quan trọng & Khẩn cấp</option>
+<option value="2">2 - Quan trọng & Không khẩn cấp</option>
+<option value="3">3 - Không quan trọng & Khẩn cấp</option>
+<option value="4">4 - Không quan trọng & Không khẩn cấp</option>
+</select>
+<button type="submit">Thêm công việc</button>
+</form>
+
+
+<div class="matrix">
+<div class="cell" data-cell="1">
+<h3>Quan trọng & Khẩn cấp</h3>
+<ul class="task-list" id="cell-1"></ul>
+</div>
+<div class="cell" data-cell="2">
+<h3>Quan trọng - Không khẩn cấp</h3>
+<ul class="task-list" id="cell-2"></ul>
+</div>
+<div class="cell" data-cell="3">
+<h3>Không quan trọng - Khẩn cấp</h3>
+<ul class="task-list" id="cell-3"></ul>
+</div>
+<div class="cell" data-cell="4">
+<h3>Không quan trọng - Không khẩn cấp</h3>
+<ul class="task-list" id="cell-4"></ul>
+</div>
+</div>
+
+
+</section>
+</main>
+
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<div class="game-board">
+<p>Nhập số dự đoán:</p>
+<input id="guessInput" type="number" min="1" max="100" />
+<button id="guessBtn">Đoán</button>
+<button id="resetGame">Chơi lại</button>
+
+
+<p id="feedback"></p>
+<p>Số lần thử: <span id="tries">0</span></p>
+
+
+<div id="confetti" class="confetti-hidden"></div>
+</div>
+
+
+<section class="explain">
+<h2>Giải thích logic</h2>
+<p>
+- Sinh số ngẫu nhiên bằng `Math.floor(Math.random()*100) + 1` để đảm bảo phạm vi 1..100.
+<br />- Xử lý input bằng cách parseInt và kiểm tra ranh giới 1-100. Nếu input rỗng hoặc ngoài ranh giới, báo lỗi.
+<br />- Đếm số lần thử trong biến `tries`. Khi đúng, show confetti (CSS animation đơn giản).
+</p>
+</section>
+</main>
+<script>
+// Game logic (độc lập, không cùng file với TODO)
+(function(){
+let secret = Math.floor(Math.random() * 100) + 1;
+let tries = 0;
+const guessInput = document.getElementById('guessInput');
+const guessBtn = document.getElementById('guessBtn');
+const feedback = document.getElementById('feedback');
+const triesEl = document.getElementById('tries');
+const resetBtn = document.getElementById('resetGame');
+const confetti = document.getElementById('confetti');
+
+
+function resetGame(){
+secret = Math.floor(Math.random() * 100) + 1;
+tries = 0;
+triesEl.textContent = tries;
+feedback.textContent = '';
+confetti.className = 'confetti-hidden';
+}
+
+
+guessBtn.addEventListener('click', ()=>{
+const val = parseInt(guessInput.value, 10);
+if (Number.isNaN(val)){
+feedback.textContent = 'Vui lòng nhập số hợp lệ!';
+return;
+}
+if (val < 1 || val > 100){
+feedback.textContent = 'Số phải trong khoảng 1 - 100.';
+return;
+}
+tries += 1;
+triesEl.textContent = tries;
+if (val === secret){
+feedback.textContent = 'Chính xác! Bạn đã đoán đúng.';
+confetti.className = 'confetti-show';
+} else if (val > secret){
+feedback.textContent = 'Quá cao.';
+} else {
+feedback.textContent = 'Quá thấp.';
+}
+});
+
+
+resetBtn.addEventListener('click', resetGame);
+
+
+})();
+</script>
+</body>
+</html>
