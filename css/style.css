@@ -1,0 +1,48 @@
+/* Reset nhẹ */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.4;background:#f6f7fb;color:#111}
+.container{max-width:1100px;margin:24px auto;padding:16px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+nav a{margin-left:12px;text-decoration:none;color:#0b5ed7}
+.card{background:white;padding:16px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.06);margin-bottom:12px}
+
+
+/* Two column layout for bai01 */
+.two-col{display:grid;grid-template-columns:280px 1fr;gap:18px}
+.info{background:white;padding:16px;border-radius:10px;min-height:220px}
+.avatar-wrap{display:flex;justify-content:center;margin-bottom:12px}
+.avatar{width:180px;height:180px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,0.08)}
+.task-board{background:white;padding:16px;border-radius:10px}
+.task-form{display:flex;gap:8px;margin-bottom:12px}
+.task-form input,.task-form select{flex:1;padding:8px;border-radius:6px;border:1px solid #ddd}
+.task-form button{padding:8px 12px;border-radius:6px;border:none;background:#0b5ed7;color:white}
+
+
+.matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.cell{padding:12px;border-radius:8px;border:1px dashed #e6e6e6;background:#fafafa;min-height:140px}
+.cell h3{font-size:14px;margin-bottom:8px}
+.task-list{list-style:none}
+.task-item{display:flex;justify-content:space-between;align-items:center;padding:6px 8px;border-radius:6px;margin-bottom:6px;background:white}
+.task-text{word-break:break-word}
+.task-delete{margin-left:8px;border:none;background:transparent;color:#c00;cursor:pointer}
+
+
+/* Small screens: stack columns */
+@media (max-width:700px){
+.two-col{grid-template-columns:1fr}
+.avatar{width:140px;height:140px}
+}
+
+
+/* Game styles and confetti */
+.single .game-board{background:white;padding:16px;border-radius:10px}
+.confetti-hidden{display:none}
+.confetti-show{position:relative;height:150px;overflow:hidden}
+.confetti-show::after{content:'';position:absolute;inset:0;background-image:linear-gradient(45deg, rgba(255,0,0,0.08), rgba(0,0,255,0.08));}
+.confetti-show{animation:confetti 1s linear}
+
+
+@keyframes confetti{
+0%{background-position:0 0}
+100%{background-position:200% 200%}
+}
